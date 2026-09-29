@@ -17,7 +17,6 @@ var _primary: Button
 var _secondary: Button
 var _mode: StringName = &""
 var _sound_label: Label
-var _eyebrow: Label
 var _card: PanelContainer
 
 func _ready() -> void:
@@ -99,8 +98,6 @@ func _ready() -> void:
 	var column := VBoxContainer.new()
 	column.add_theme_constant_override("separation", 18)
 	card.add_child(column)
-	_eyebrow = _label("ЛАБОРАТОРИЯ 07 / ТЕРМИНАЛ", 11, MINT)
-	column.add_child(_eyebrow)
 	_title = _label("", 38, Color("ecfff9"))
 	column.add_child(_title)
 	_description = _label("", 16, MUTED)
@@ -125,7 +122,6 @@ func update_run(seconds: float, distance: float, kills: int, total: int) -> void
 
 func show_result(won: bool, seconds: float, kills: int, total: int) -> void:
 	_mode = &"result"
-	_eyebrow.show()
 	_description.show()
 	_card.custom_minimum_size.y = 340
 	_title.text = "ПОБЕГ УДАЛСЯ" if won else "GAME OVER"
@@ -140,7 +136,6 @@ func show_pause(paused: bool) -> void:
 	_mode = &"pause"
 	_overlay.visible = paused
 	if paused:
-		_eyebrow.hide()
 		_description.hide()
 		_card.custom_minimum_size.y = 0
 		_title.text = "ПАУЗА"
