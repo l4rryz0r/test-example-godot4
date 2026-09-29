@@ -116,7 +116,7 @@ func set_health(current: int, maximum: int) -> void:
 		_cells[i].color = (Color("ff637d") if current <= 2 else MINT) if i < current else Color("24374a")
 
 func update_run(seconds: float, distance: float, kills: int, total: int) -> void:
-	_clock.text = "%02d:%02d" % [int(seconds) / 60, int(seconds) % 60]
+	_clock.text = "%02d:%02d" % [floori(seconds / 60.0), int(seconds) % 60]
 	_progress.value = clampf(distance, 0.0, 1.0) * 100.0
 	_kills.text = "СТРАЖИ  %d / %d" % [kills, total]
 
